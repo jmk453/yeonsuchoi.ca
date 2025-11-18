@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+mkdir -p build && rm -r build && mkdir build
+cp -r content/. build
+find build -type f -exec brotli --best --squash --output={}.br {} \;
+chmod og+r -R build
+rsync -rz --delete-during build/ monroe.tailnet.bytenest.ca:/var/www/yeonsuchoi.ca/
